@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "ai-semiconductor",
+    "name": "AI Semiconductor",
+    "description": "Companies building the computing infrastructure behind artificial intelligence.",
+    "companies": ["NVDA", "TSM", "ASML", "AMD"],
+    "opportunity": "High",
+    "thesis": [
+      "AI compute demand growth",
+      "Advanced semiconductor importance"
+    ],
+    "risks": [
+      "Export restrictions",
+      "Supply chain concentration"
+    ]
+  },
+  {
+    "slug": "cloud-ai",
+    "name": "Cloud AI",
+    "description": "Cloud platforms enabling enterprise artificial intelligence adoption.",
+    "companies": ["MSFT", "GOOGL", "AMZN"],
+    "opportunity": "High"
+  }
+]
