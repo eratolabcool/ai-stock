@@ -1,0 +1,30 @@
+{
+  "stocks": [
+    {
+      "slug": "nvidia-ai-stock",
+      "symbol": "NVDA",
+      "type": "company-research"
+    },
+    {
+      "slug": "microsoft-ai-stock",
+      "symbol": "MSFT",
+      "type": "company-research"
+    }
+  ],
+  "themes": [
+    {
+      "slug": "ai-semiconductor",
+      "type": "theme-research"
+    },
+    {
+      "slug": "cloud-ai",
+      "type": "theme-research"
+    }
+  ],
+  "reports": [
+    {
+      "slug": "ai-market-outlook-2026",
+      "type": "market-report"
+    }
+  ]
+}
