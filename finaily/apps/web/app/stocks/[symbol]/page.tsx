@@ -1,48 +1,49 @@
+import { notFound } from "next/navigation";
+import { getCompanyBySymbol } from "@/lib/research";
+import { ScoreCard } from "@/components/intelligence/ScoreCard";
+import { ThesisCard } from "@/components/intelligence/ThesisCard";
+import { RiskCard } from "@/components/intelligence/RiskCard";
+import { ResearchHeader } from "@/components/intelligence/ResearchHeader";
+import { RelatedCompanies } from "@/components/intelligence/RelatedCompanies";
+
 type StockPageProps = {
   params: Promise<{ symbol: string }>;
 };
 
-const stocks: Record<string, {
-  company: string;
-  theme: string;
-  score: number;
-  description: string;
-}> = {
-  nvda: {
-    company: "NVIDIA",
-    theme: "AI Infrastructure",
-    score: 92,
-    description: "AI computing infrastructure leader powering accelerated computing.",
-  },
-  msft: {
-    company: "Microsoft",
-    theme: "Cloud AI",
-    score: 89,
-    description: "Enterprise AI platform and cloud intelligence ecosystem.",
-  },
-  tsm: {
-    company: "TSMC",
-    theme: "AI Semiconductor",
-    score: 87,
-    description: "Advanced semiconductor manufacturing supporting AI hardware growth.",
-  },
-};
+export async function generateMetadata({ params }: StockPageProps) {
+  const { symbol } = await params;
+  const company = getCompanyBySymbol(symbol);
+
+  return {
+    title: company
+      ? `${company.name} AI Stock Research | Finaily`
+      : `${symbol.toUpperCase()} AI Research | Finaily`,
+    description: company?.description ?? "AI investment intelligence research.",
+  };
+}
 
 export default async function StockPage({ params }: StockPageProps) {
   const { symbol } = await params;
-  const stock = stocks[symbol.toLowerCase()] ?? {
-    company: symbol.toUpperCase(),
-    theme: "AI Research",
-    score: 0,
-    description: "Finaily research profile.",
-  };
+  const company = getCompanyBySymbol(symbol);
+
+  if (!company) {
+    notFound();
+  }
 
   return (
-    <main>
-      <h1>{stock.company}</h1>
-      <p>{stock.theme}</p>
-      <strong>Finaily AI Score: {stock.score}</strong>
-      <p>{stock.description}</p>
+    <main className="mx-auto max-w-5xl space-y-8 px-6 py-12">
+      <ResearchHeader
+        title={`${company.name} (${company.symbol})`}
+        subtitle={company.theme}
+      />
+
+      <ScoreCard score={company.finailyScore} />
+
+      <ThesisCard thesis={company.thesis ?? []} />
+
+      <RiskCard risks={company.risks ?? []} />
+
+      <RelatedCompanies companies={company.relatedCompanies ?? []} />
     </main>
   );
 }
