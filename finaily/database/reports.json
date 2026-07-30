@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "ai-market-outlook-2026",
+    "title": "AI Market Outlook 2026",
+    "category": "AI Infrastructure",
+    "summary": "Analysis of major artificial intelligence investment themes and companies.",
+    "relatedThemes": ["ai-semiconductor", "cloud-ai"]
+  },
+  {
+    "slug": "ai-agent-economy",
+    "title": "The AI Agent Economy",
+    "category": "Emerging Technology",
+    "summary": "Research framework for companies benefiting from AI agents.",
+    "relatedThemes": ["cloud-ai"]
+  }
+]
