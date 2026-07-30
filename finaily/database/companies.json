@@ -1,0 +1,29 @@
+[
+  {
+    "symbol": "NVDA",
+    "name": "NVIDIA",
+    "theme": "AI Infrastructure",
+    "finailyScore": 92,
+    "thesis": [
+      "AI GPU infrastructure leadership",
+      "Data center growth opportunity"
+    ],
+    "risks": [
+      "Export restrictions",
+      "Competition"
+    ]
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Microsoft",
+    "theme": "Cloud AI",
+    "finailyScore": 89,
+    "thesis": [
+      "Enterprise AI adoption",
+      "Cloud ecosystem advantage"
+    ],
+    "risks": [
+      "AI infrastructure cost"
+    ]
+  }
+]
