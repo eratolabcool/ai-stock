@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  portfolios Portfolio[]
+}
+
+model Stock {
+  id        String @id @default(cuid())
+  symbol    String @unique
+  company   String
+  theme     String?
+  aiScore   Int @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Portfolio {
+  id        String @id @default(cuid())
+  userId    String
+  holdings  Json
+  createdAt DateTime @default(now())
+  user      User @relation(fields:[userId], references:[id])
+}
