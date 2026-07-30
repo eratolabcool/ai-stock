@@ -1,0 +1,58 @@
+model User {
+  id String @id @default(cuid())
+  email String @unique
+  name String?
+  createdAt DateTime @default(now())
+
+  portfolios Portfolio[]
+  watchlists Watchlist[]
+  alerts Alert[]
+  subscription Subscription?
+}
+
+model Portfolio {
+  id String @id @default(cuid())
+  userId String
+  name String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields:[userId], references:[id])
+  holdings Holding[]
+}
+
+model Holding {
+  id String @id @default(cuid())
+  portfolioId String
+  symbol String
+  weight Float
+
+  portfolio Portfolio @relation(fields:[portfolioId], references:[id])
+}
+
+model Watchlist {
+  id String @id @default(cuid())
+  userId String
+  symbol String
+
+  user User @relation(fields:[userId], references:[id])
+}
+
+model Alert {
+  id String @id @default(cuid())
+  userId String
+  symbol String
+  type String
+  message String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields:[userId], references:[id])
+}
+
+model Subscription {
+  id String @id @default(cuid())
+  userId String @unique
+  plan String @default("FREE")
+  status String @default("ACTIVE")
+
+  user User @relation(fields:[userId], references:[id])
+}
