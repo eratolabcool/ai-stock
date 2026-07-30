@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Stock {
+  id          String   @id @default(cuid())
+  symbol      String   @unique
+  company     String
+  market      String
+  sector      String?
+  theme       String?
+  aiScore     Int      @default(0)
+  reports     Report[]
+  createdAt   DateTime @default(now())
+}
+
+model Report {
+  id        String   @id @default(cuid())
+  title     String
+  summary   String
+  risk      String?
+  stockId   String
+  stock     Stock @relation(fields: [stockId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model DailyReport {
+  id          String @id @default(cuid())
+  date        DateTime @unique
+  summary     String
+  themes      String
+  createdAt   DateTime @default(now())
+}
