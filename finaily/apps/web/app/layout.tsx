@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Navbar from '../components/Navbar';
+import DashboardShell from '../components/layout/DashboardShell';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="bg-slate-50 text-slate-900">
         <Navbar />
-        {children}
+        <DashboardShell>{children}</DashboardShell>
       </body>
     </html>
   );
