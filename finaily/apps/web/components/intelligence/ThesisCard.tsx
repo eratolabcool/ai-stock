@@ -2,7 +2,7 @@ type Props = {
   thesis: string[];
 };
 
-export default function ThesisCard({ thesis }: Props) {
+export function ThesisCard({ thesis }: Props) {
   return (
     <section className="rounded-xl border p-6">
       <h2 className="text-xl font-semibold">Investment Thesis</h2>
@@ -12,3 +12,5 @@ export default function ThesisCard({ thesis }: Props) {
     </section>
   );
 }
+
+export default ThesisCard;
