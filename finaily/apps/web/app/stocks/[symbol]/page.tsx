@@ -31,13 +31,19 @@ export default async function StockPage({ params }: StockPageProps) {
   }
 
   return (
-    <main className="mx-auto max-w-5xl space-y-8 px-6 py-12">
+    <main className="mx-auto max-w-6xl space-y-8 px-6 py-12">
       <ResearchHeader
         title={`${company.name} (${company.symbol})`}
-        subtitle={company.theme}
+        subtitle={`${company.theme} · AI Investment Research`}
       />
 
-      <ScoreCard score={company.finailyScore} />
+      <div className="grid gap-6 md:grid-cols-2">
+        <ScoreCard score={company.finailyScore} />
+        <section className="rounded-xl border p-6">
+          <h2 className="text-xl font-semibold">Investment Focus</h2>
+          <p className="mt-3">Finaily tracks companies shaping the AI economy through themes, research signals and strategic analysis.</p>
+        </section>
+      </div>
 
       <ThesisCard thesis={company.thesis ?? []} />
 
