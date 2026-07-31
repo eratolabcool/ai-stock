@@ -4,13 +4,15 @@
     "title": "AI Market Outlook 2026",
     "category": "AI Infrastructure",
     "summary": "Analysis of major artificial intelligence investment themes and companies.",
-    "relatedThemes": ["ai-semiconductor", "cloud-ai"]
+    "relatedThemes": ["ai-semiconductor", "cloud-ai"],
+    "companies": ["NVDA", "MSFT", "TSM"]
   },
   {
     "slug": "ai-agent-economy",
     "title": "The AI Agent Economy",
     "category": "Emerging Technology",
     "summary": "Research framework for companies benefiting from AI agents.",
-    "relatedThemes": ["cloud-ai"]
+    "relatedThemes": ["cloud-ai"],
+    "companies": ["MSFT", "GOOGL", "AMZN"]
   }
 ]
