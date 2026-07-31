@@ -10,11 +10,17 @@ export type CompanyIntelligence = {
 };
 
 export function getCompanies(): CompanyIntelligence[] {
-  return companies as CompanyIntelligence[];
+  return (companies as CompanyIntelligence[]).sort(
+    (a, b) => b.finailyScore - a.finailyScore
+  );
 }
 
 export function getCompanyBySymbol(symbol: string) {
   return getCompanies().find(
     (company) => company.symbol.toLowerCase() === symbol.toLowerCase()
   );
+}
+
+export function getTopCompanies(limit = 5) {
+  return getCompanies().slice(0, limit);
 }
