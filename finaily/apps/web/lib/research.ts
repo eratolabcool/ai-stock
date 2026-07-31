@@ -12,6 +12,8 @@ export function getCompany(symbol: string) {
   );
 }
 
+export const getCompanyBySymbol = getCompany;
+
 export function getThemes() {
   return themes;
 }
