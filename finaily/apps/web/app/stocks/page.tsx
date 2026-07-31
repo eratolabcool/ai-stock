@@ -1,3 +1,5 @@
+import StockCard from '@/components/intelligence/StockCard';
+
 const stocks = [
   {
     rank: 1,
@@ -50,27 +52,10 @@ export default function StocksPage() {
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border bg-white">
-          <table className="w-full">
-            <thead className="bg-slate-100">
-              <tr>
-                <th className="p-4 text-left">Rank</th>
-                <th className="p-4 text-left">Company</th>
-                <th className="p-4 text-left">Score</th>
-                <th className="p-4 text-left">Theme</th>
-              </tr>
-            </thead>
-            <tbody>
-              {stocks.map((stock) => (
-                <tr key={stock.symbol} className="border-t">
-                  <td className="p-4">#{stock.rank}</td>
-                  <td className="p-4 font-semibold">{stock.name} ({stock.symbol})</td>
-                  <td className="p-4 font-bold text-blue-600">{stock.score}</td>
-                  <td className="p-4">{stock.theme}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="grid gap-6 md:grid-cols-2">
+          {stocks.map((stock) => (
+            <StockCard key={stock.symbol} {...stock} />
+          ))}
         </div>
       </section>
     </main>
