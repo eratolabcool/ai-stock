@@ -27,7 +27,7 @@ export default async function StockPage({ params }: { params: Promise<{ symbol: 
       <div className="mx-auto max-w-7xl space-y-8 px-6 py-12">
         <ResearchHeader
           title={`${company.name} (${company.symbol})`}
-          subtitle={`${company.theme} · AI Investment Research Terminal`}
+          subtitle={`${company.theme} · Finaily Stock Terminal`}
         />
 
         <section className="grid gap-6 lg:grid-cols-4">
@@ -37,24 +37,46 @@ export default async function StockPage({ params }: { params: Promise<{ symbol: 
             <p className="mt-3 text-2xl font-bold">Leader</p>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
-            <p className="text-slate-400">Theme</p>
+            <p className="text-slate-400">Primary Theme</p>
             <p className="mt-3 text-2xl font-bold">{company.theme}</p>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
-            <p className="text-slate-400">Coverage</p>
-            <p className="mt-3 text-2xl font-bold">AI Research</p>
+            <p className="text-slate-400">Research Coverage</p>
+            <p className="mt-3 text-2xl font-bold">Active</p>
           </div>
         </section>
 
-        <section className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
-          <h2 className="text-2xl font-bold">Finaily Intelligence View</h2>
-          <p className="mt-3 text-slate-300">
-            Finaily analyzes strategic positioning, AI exposure, industry themes and potential risks.
-          </p>
+        <section className="grid gap-6 lg:grid-cols-2">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-2xl font-bold">AI Intelligence View</h2>
+            <p className="mt-3 text-slate-300">
+              Finaily evaluates AI positioning, strategic advantages, ecosystem strength and market risks.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+            <h2 className="text-2xl font-bold">AI Supply Chain</h2>
+            <div className="mt-4 space-y-3 text-slate-300">
+              <p>{company.name}</p>
+              <p>↓</p>
+              <p>Advanced Semiconductor Manufacturing</p>
+              <p>↓</p>
+              <p>AI Infrastructure Ecosystem</p>
+            </div>
+          </div>
         </section>
 
         <ThesisCard thesis={company.thesis ?? []} />
         <RiskCard risks={company.risks ?? []} />
+
+        <section className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <h2 className="text-2xl font-bold">Market Signals</h2>
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
+            <div>AI Demand: Strong</div>
+            <div>Industry Trend: Positive</div>
+            <div>Risk Level: Medium</div>
+          </div>
+        </section>
+
         <RelatedCompanies companies={company.relatedCompanies ?? []} />
       </div>
     </main>
