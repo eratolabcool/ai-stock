@@ -19,3 +19,31 @@ model Watchlist {
   symbol    String
   createdAt DateTime @default(now())
 }
+
+model Company {
+  id          String   @id @default(cuid())
+  symbol      String   @unique
+  name        String
+  sector      String?
+  score       Int      @default(0)
+  thesis      String?
+  risks       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Theme {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  score       Int      @default(0)
+  description String?
+}
+
+model ResearchReport {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  summary     String
+  createdAt   DateTime @default(now())
+}
