@@ -3,7 +3,7 @@ type Props = {
   label?: string;
 };
 
-export default function ScoreCard({ score, label = 'Finaily Score' }: Props) {
+export function ScoreCard({ score, label = 'Finaily Score' }: Props) {
   return (
     <section className="rounded-xl border p-6">
       <p className="text-sm text-muted-foreground">{label}</p>
@@ -12,3 +12,5 @@ export default function ScoreCard({ score, label = 'Finaily Score' }: Props) {
     </section>
   );
 }
+
+export default ScoreCard;
