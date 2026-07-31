@@ -6,10 +6,7 @@ const themes = {
     description: 'Companies building the infrastructure behind artificial intelligence.',
     opportunity: 'High',
     companies: ['NVIDIA', 'TSMC', 'ASML', 'AMD'],
-    thesis: [
-      'AI compute demand is increasing.',
-      'Advanced semiconductor infrastructure remains critical for AI growth.'
-    ],
+    thesis: ['AI compute demand is increasing.', 'Advanced semiconductor infrastructure remains critical for AI growth.'],
     risks: ['Supply chain concentration', 'Export restrictions']
   },
   'cloud-ai': {
@@ -30,40 +27,38 @@ const themes = {
   }
 };
 
-export default async function ThemePage({
-  params
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function ThemePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const theme = themes[slug as keyof typeof themes];
 
   if (!theme) notFound();
 
   return (
-    <main>
-      <h1>{theme.title}</h1>
-      <p>{theme.description}</p>
+    <main className="mx-auto max-w-5xl space-y-8 px-6 py-12">
+      <header>
+        <h1 className="text-4xl font-bold">{theme.title}</h1>
+        <p className="mt-3 text-lg">{theme.description}</p>
+      </header>
 
-      <h2>Opportunity</h2>
-      <p>{theme.opportunity}</p>
+      <section className="rounded-xl border p-6">
+        <h2 className="text-xl font-semibold">Opportunity</h2>
+        <strong>{theme.opportunity}</strong>
+      </section>
 
-      <h2>Investment Thesis</h2>
-      <ul>
-        {theme.thesis.map((item) => <li key={item}>{item}</li>)}
-      </ul>
+      <section className="rounded-xl border p-6">
+        <h2 className="text-xl font-semibold">Investment Thesis</h2>
+        <ul>{theme.thesis.map(item => <li key={item}>{item}</li>)}</ul>
+      </section>
 
-      <h2>Companies</h2>
-      <ul>
-        {theme.companies.map((company) => <li key={company}>{company}</li>)}
-      </ul>
+      <section className="rounded-xl border p-6">
+        <h2 className="text-xl font-semibold">Companies</h2>
+        <p>{theme.companies.join(' · ')}</p>
+      </section>
 
-      <h2>Risks</h2>
-      <ul>
-        {theme.risks.map((risk) => <li key={risk}>{risk}</li>)}
-      </ul>
-
-      <p>Powered by Finaily AI research intelligence.</p>
+      <section className="rounded-xl border p-6">
+        <h2 className="text-xl font-semibold">Risks</h2>
+        <ul>{theme.risks.map(item => <li key={item}>{item}</li>)}</ul>
+      </section>
     </main>
   );
 }
